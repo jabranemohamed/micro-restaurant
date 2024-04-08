@@ -1,0 +1,18 @@
+server:
+  port: 9092
+
+spring:
+  profiles:
+    active: local
+  application:
+    name: FOOD-CATALOGUE-SERVICE
+  datasource:
+    url: jdbc:postgresql://localhost:5432/food_db
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
