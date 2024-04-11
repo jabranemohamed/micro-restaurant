@@ -6,7 +6,9 @@ import org.mhjabrane.foodservice.dto.Restaurant;
 import org.mhjabrane.foodservice.entity.FoodItem;
 import org.mhjabrane.foodservice.mapper.FoodItemMapper;
 import org.mhjabrane.foodservice.repo.FoodItemRepo;
+import org.mhjabrane.foodservice.service.client.RestaurantFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,6 +22,9 @@ public class FoodCatalogueService {
 
     @Autowired
     RestTemplate restTemplate;
+
+    @Autowired
+    RestaurantFeignClient restaurantFeignClient;
 
 
     public FoodItemDTO addFoodItem(FoodItemDTO foodItemDTO) {
@@ -41,7 +46,8 @@ public class FoodCatalogueService {
     }
 
     private Restaurant fetchRestaurantDetailsFromRestaurantMS(Integer restaurantId) {
-       return restTemplate.getForObject("http://RESTAURANT-SERVICE/restaurant/fetchById/"+restaurantId, Restaurant.class);
+        ResponseEntity<Restaurant> restaurantById = restaurantFeignClient.findRestaurantById(restaurantId);
+        return restaurantById.getBody();
     }
 
     private List<FoodItem> fetchFoodItemList(Integer restaurantId) {

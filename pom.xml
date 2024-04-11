@@ -21,4 +21,6 @@
         <module>orders-service</module>
     </modules>
 
+    <packaging>pom</packaging>
+
 </project>

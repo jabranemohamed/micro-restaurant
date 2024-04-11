@@ -5,12 +5,16 @@ eureka:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/customer_db
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://flora.db.elephantsql.com:5432/kyjtfsco
+    username: kyjtfsco
+    password: mD13HV2CTY0C_I0ICBNrkD89eyvHS1rk
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
