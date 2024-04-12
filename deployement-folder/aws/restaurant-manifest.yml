@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: restaurantapp
-          image: jabranemohamed/restaurant-service:latest
+          image: jabranemohamed/restaurant-service:0.0.2
           imagePullPolicy: Always
           ports:
             - containerPort: 9091
@@ -25,12 +25,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: secret
-                  key: mysql-username
+                  key: restaurant-username
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: secret
-                  key: mysql-password
+                  key: restaurant-password
             - name: SPRING_DATASOURCE_URL
               valueFrom:
                 configMapKeyRef:

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: userapp
-          image: jabranemohamed/user-service:latest
+          image: jabranemohamed/customer-service:0.0.2
           imagePullPolicy: Always
           ports:
             - containerPort: 9093
@@ -25,12 +25,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: secret
-                  key: mysql-username
+                  key: customer-username
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: secret
-                  key: mysql-password
+                  key: customer-password
             - name: SPRING_DATASOURCE_URL
               valueFrom:
                 configMapKeyRef:
